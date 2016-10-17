@@ -3,6 +3,7 @@
 #	    ID: 10157251
 #	Net ID: 14lp9
 
+#lane[123] store the current position on the 'track'
 lane1=0
 lane2=0
 lane3=0
