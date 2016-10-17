@@ -8,7 +8,7 @@ FALSE=0
 
 result=0
 
-runing=$TRUE
+running=$TRUE
 
 #Set the initial number
 error=$TRUE
@@ -16,7 +16,7 @@ error=$TRUE
 while (($error == $TRUE)); do
 	echo -n 'Please insert a number: '
 	read numOne #Store the first number in a variable
-	if [ "numOne" -- ":q" ]; then
+	if [ "numOne" == ":q" ]; then
 		echo Thanks for using my calculator
 		exit
 	fi
@@ -60,7 +60,18 @@ while (($running == $TRUE)); do
 			case "$opOne" in
 			"+")	result=$(($result + $numOne))
 				;;
-			
+			"-")	result=$(($result - $numOne))
+				;;
+			"/")	result=$(($result / $numOne))
+				;;
+			"*")	result=$(($result * $numOne))
+				;;
+			*)	#This should never happen because we check for correct
+				#character eariler.
+				echo bad_error
+				;;
+			esac
+			echo "Result so far is: $result"	
 			
 		else
 			#its bad input
