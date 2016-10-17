@@ -6,7 +6,7 @@
 lane1=0
 lane2=0
 lane3=0
-length=50 #The length of the 'track'
+length=40 #The length of the 'track'
 
 TRUE=1
 FALSE=0
