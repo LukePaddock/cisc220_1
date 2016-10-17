@@ -16,7 +16,7 @@ error=$TRUE
 while (($error == $TRUE)); do
 	echo -n 'Please insert a number: '
 	read numOne #Store the first number in a variable
-	if [ "numOne" == ":q" ]; then
+	if [ "$numOne" == ":q" ]; then
 		echo Thanks for using my calculator
 		exit
 	fi
@@ -43,13 +43,15 @@ while (($running == $TRUE)); do
 		elif [ "$opOne" == ":q" ]; then
 			echo Thanks for using my calculator
 			exit
+		else
+			echo -n "Error! "
 		fi
 	done
 	error=$TRUE
 	while (($error == $TRUE)); do
 		echo -n 'Please insert a number: '
 		read numOne #Store the first number in a variable
-		if [ "numOne" == ":q" ]; then
+		if [ "$numOne" == ":q" ]; then
 			echo Thanks for using my calculator
 			exit
 		fi
