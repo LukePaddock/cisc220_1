@@ -3,59 +3,60 @@
 #	    ID: 10157251
 #	Net ID: 14lp9
 
-TRUE=1
+TRUE=1	#Use integers for true / false for simplicity
 FALSE=0
 
 result=0
 
 running=$TRUE
 
-#Set the initial number
-error=$TRUE
 
-while (($error == $TRUE)); do
+error=$TRUE
+#Set the first number
+while (($error == $TRUE)); do	#Will loop until input is correct
 	echo -n 'Please insert a number: '
 	read numOne #Store the first number in a variable
-	if [ "$numOne" == ":q" ]; then
+	if [ "$numOne" == ":q" ]; then	#user wants to quit so quit
 		echo Thanks for using my calculator
 		exit
 	fi
 	if [ "$numOne" -eq "$numOne" ] 2>/dev/null; then
-		#Its an integer
-		error=$FALSE
-		result=$numOne
+		#User input is correct!
+		error=$FALSE	# stop the loop!	
+		result=$numOne	 
 	else
 		#its bad input
 		echo -n "ERROR! "
 	fi
 done
-while (($running == $TRUE)); do
-	error=$TRUE
+while (($running == $TRUE)); do #Main program loop
+	error=$TRUE 
 	
-	while (($error == $TRUE)); do
+	while (($error == $TRUE)); do #Will loop until input is correct
 		echo -n 'Please insert an operation: '
 		read opOne #Store operation into variable opOne
 		if [ "$opOne" == "+" ] || \
 		   [ "$opOne" == "-" ] || \
 		   [ "$opOne" == "/" ] || \
-		   [ "$opOne" == "*" ]; then
-			error=$FALSE;
-		elif [ "$opOne" == ":q" ]; then
+		   [ "$opOne" == "*" ]; then #if user input correct
+			error=$FALSE; #Stop the loop!
+		elif [ "$opOne" == ":q" ]; then #if he wants to quit
 			echo Thanks for using my calculator
-			exit
+			exit #just quit the program
 		else
 			echo -n "Error! "
+			#User must try again. :/
 		fi
 	done
 	error=$TRUE
-	while (($error == $TRUE)); do
+	while (($error == $TRUE)); do #Will loop until input is correct
 		echo -n 'Please insert a number: '
 		read numOne #Store the first number in a variable
-		if [ "$numOne" == ":q" ]; then
+		if [ "$numOne" == ":q" ]; then #user want to quit
 			echo Thanks for using my calculator
-			exit
+			exit	#quit the program
 		fi
-		if [ "$numOne" -eq "$numOne" ] 2>/dev/null; then
+		if [ "$numOne" -eq "$numOne" ] 2>/dev/null; then #input is correct
 			#Its an integer
 			error=$FALSE
 
@@ -69,11 +70,11 @@ while (($running == $TRUE)); do
 			"*")	result=$(($result * $numOne))
 				;;
 			*)	#This should never happen because we check for correct
-				#character eariler.
+				#character eariler (when user inputs the operation)
 				echo bad_error
 				;;
 			esac
-			echo "Result so far is: $result"	
+			echo "Result so far is: $result"	#print current result	
 			
 		else
 			#its bad input
